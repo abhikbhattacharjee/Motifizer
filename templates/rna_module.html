@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MOTIFIZER : RNA-Seq Module</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/title.png') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact3" style="background-image: url('static/images/bg-01.jpg');">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+				<form class="contact3-form validate-form" method="POST" action="/hisat">
+					<span class="contact3-form-title">
+						Motifizer
+					</span>
+					<span class="contact3-form-title"><center>
+						<h4>
+							An automated module for prediction gene regulation from sequencing datasets
+						</h4>
+						<!--<h6>
+							Developed by SPACY<br>
+						</h6>--><br>
+						<h6> RNA-Seq Module </h6>
+					</center></span> 
+
+					
+					
+					<div class="container-contact3-form-btn">
+						<center><button class="contact3-form-btn" type="submit" >
+							Hisat2 Analysis
+						</button></center><br>
+						</center>
+						
+					</div>
+				</form>
+
+				
+				<form class="contact3-form validate-form" method="POST" action="/edger">
+					<div class="container-contact3-form-btn">
+						<center><button class="contact3-form-btn" type="submit">
+							Edge-R Analysis
+						</button></center><br>
+						</center>
+						
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="static/js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>

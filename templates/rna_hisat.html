@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MOTIFIZER : RNA-Seq Module</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static', filename='images/icons/title.png') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/bootstrap/css/bootstrap.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/animate/animate.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/css-hamburgers/hamburgers.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='vendor/select2/select2.min.css') }}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/util.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}"/>
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<div class="bg-contact3" style="background-image: url('static/images/bg-01.jpg');">
+		<div class="container-contact3">
+			<div class="wrap-contact3">
+				<form class="contact3-form validate-form" method="POST" action="/run_hisat">
+					<span class="contact3-form-title">
+						Motifizer
+					</span>
+					<span class="contact3-form-title"><center>
+						<h4>
+							An automated module for prediction gene regulation from sequencing datasets
+						</h4>
+						<!--<h6>
+							Developed by SPACY<br>
+						</h6>--><br>
+						<h6> RNA-Seq Module : HISAT2 Analysis </h6>
+					</center></span> 
+
+					
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Path to Genome FASTA file (Index file to be created for the Genome file)</h6><br>
+						<input class="input3" type="text" name="genome_path_rna" placeholder="Path to Genome FASTA file">
+						<span class="focus-input3"></span>
+					</div><br><br>
+
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Path to first FASTQ file (Provide GunZip (.gz) file)</h6><br>
+						<input class="input3" type="text" name="fq1" placeholder="Path to first FASTQ file (Provide GunZip (.gz) file)">
+						<span class="focus-input3"></span>
+					</div><br><br>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Path to second FASTQ file (Provide GunZip (.gz) file)</h6><br>
+						<input class="input3" type="text" name="fq2" placeholder="Path to second FASTQ file (Provide GunZip (.gz) file)">
+						<span class="focus-input3"></span>
+					</div><br><br>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the SAM file name that is to be created</h6><br>
+						<input class="input3" type="text" name="sam_name" placeholder="Enter the SAM file name that is to be created">
+						<span class="focus-input3"></span>
+					</div><br><br>
+
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the BAM file name that is to be created</h6><br>
+						<input class="input3" type="text" name="bam_name" placeholder="Enter the BAM file name that is to be created">
+						<span class="focus-input3"></span>
+					</div><br><br>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the FILTERED BAM file name that is to be created</h6><br>
+						<input class="input3" type="text" name="fbam_name" placeholder="Enter the FILTERED BAM file name that is to be created">
+						<span class="focus-input3"></span>
+					</div><br><br>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the path to gene gtf file</h6><br>
+						<input class="input3" type="text" name="gtf_path" placeholder="Enter the path to gene gtf file">
+						<span class="focus-input3"></span>
+					</div><br><br>
+
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the name of desired HTSEQ file</h6><br>
+						<input class="input3" type="text" name="htseq_name" placeholder="Enter the name of desired HTSEQ file">
+						<span class="focus-input3"></span>
+					</div><br><br>
+					
+					<div class="wrap-input3 validate-input" data-validate="Name is required">
+						<h6>Enter the name of directory to store results</h6><br>
+						<input class="input3" type="text" name="save_results_rna" placeholder="Path to save results">
+						<span class="focus-input3"></span>
+					</div><br><br>
+										
+					<div class="container-contact3-form-btn">
+						<center><button class="contact3-form-btn" type="submit">
+							Click to start RNA-Seq : HISAT2 Analysis
+						</button></center><br>
+						<center><button class="contact3-form-btn" type="reset">
+							Reset
+						</button></center>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="static/js/main.js"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-23581568-13');
+</script>
+
+</body>
+</html>
