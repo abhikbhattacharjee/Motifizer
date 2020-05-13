@@ -149,7 +149,9 @@ RUN wget http://homer.ucsd.edu/homer/configureHomer.pl
 RUN perl configureHomer.pl -install
 ENV PATH="/tmp1/bin:${PATH}"
 RUN perl configureHomer.pl -install dm6
-    
+
+RUN pip install flask
+EXPOSE 5000
     
 RUN apt-get install -y protobuf-compiler python-pil python-lxml
 RUN pip install jupyter
