@@ -158,6 +158,13 @@ RUN pip install jupyter
 RUN pip install matplotlib
 RUN pip install tensorflow
 
+RUN pip install pandas
+RUN pip install xlrd
+RUN sudo apt-get install -y parallel
+RUN pip install openpyxl
+RUN pip install keras
+RUN pip install scikit-learn
+
 ENV PATH="/opt/bin:${PATH}"
 RUN adduser --disabled-password --gecos '' motifizer
 RUN adduser motifizer sudo
