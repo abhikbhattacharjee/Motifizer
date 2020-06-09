@@ -96,4 +96,76 @@ motifizer@c3c7c64aaa9f:~$ python bookmanager.py
  ### For Analysis Module
  ```bash
  ./BE_Project.sh <JASPAR_file_or_equivalent> <RNA_Seq_data_Excel> <sheet_name_for_UP_regulation_data> <sheet_name_for_DOWN_regulation_data> <sheet_name_for_NOTDIFF_regulation_data> <dmel_genome> <genome_fa_file> <extra_bases> <File_Up> <File_Down> <File_Notdiff> <Save_results>
- ```
+
+```
+- <JASPAR_file_or_equivalent> - Path to/ Name of JASPAR or equivalent database
+- <RNA_Seq_data_excel> - Path/File name for the RNA-Seq Data which is to be parsed into the analysis module
+- <sheet_name_for_UP_regulation_data> - Sheet name where UP regulated sequences are stored
+- <sheet_name_for_DOWN_regulation_data> - Sheet name where DOWN regulated sequences are stored
+- <sheet_name_for_NOTDIFF_regulation_data> - Sheet name where NOT DIFFERENTIALLY regulated sequences are stored
+- <dmel_genome> - Path to dmel genome file
+- <genome_fa_file> - Path to genome fasta file
+- <extra_bases> - Extra bases to be added to the sequences
+- <File_Up> - File name to store UP regulated sequences
+- <File_Down> - File name to store DOWN regulated sequences 
+- <File_Notdiff> - File name to store NOT DIFFERENTIALLY regulated sequences
+- <Save_results> - Path to save results/Directory name to be created
+
+### For ChIP_Seq Module
+```bash
+./ChIP_seq.sh <path_genome_fa> <path_test_fq> <path_input_fq> <genome_name> <save_res>
+```
+
+- <path_genome_fa> - Path to the genome fasta file 
+- <path_test_fq> - Path to the test FASTQ file (.gzip)
+- <path_input_fq> - Path to the input FASTQ file (.gzip)
+- <genome_name> - Genome name (dm6,etc)
+- <save_res> - Path to save results/Directory name to be created
+
+### For RNA-Seq Module
+#### HISAT2 Analysis
+```bash
+./RNA_seq.sh <genome_fa> <fq1_file> <fq2_file> <sam_file> <bam_file> <filtered_bam> <gene_gtf> <htseq_file> <save_res>
+```
+
+- <genome_fa> - Path to genome file for which indexing is to be done
+- <fq1_file> - Path to first FASTQ file
+- <fq2_file> - Path to second FASTQ file
+- <sam_file> - Name of SAM file to be created
+- <bam_file> - Name of BAM file to be created
+- <filtered_bam> - Name of Filtered BAM file to be created
+- <gene_gtf> - Path to gene gtf file
+- <htseq_file> - Desired HTSEQ file name
+- <save_res> - Path to save results/Directory name to be created
+
+#### EdgeR Analysis
+```bash
+./edgeR_rna_seq.sh <test_file_1> <test_file_2> <test_file_3> <control_file_1> <control_file_2> <control_file_3> <save_res> 
+```
+
+- <test_file_1> - Path to test file 1
+- <test_file_2> - Path to test file 2
+- <test_file_3> - Path to test file 3
+- <control_file_1> - Path to control file 1
+- <control_file_2> - Path to control file 2
+- <control_file_3> - Path to control file 3
+- <save_res> - Path to save results/Directory name to be created
+
+### For Prediction Module
+```bash
+./predict.sh <JASPAR_file_or_equivalent> <ChIP_Seq_data_Excel> <sheet_name_for_pred_data> <dmel_genome> <genome_fa_file> <extra_bases> <File_Pred> <Save_results>
+```
+
+- <JASPAR_file_or_equivalent> - Path to/ Name of JASPAR or equivalent database
+- <RNA_Seq_data_excel> - Path/File name for the RNA-Seq Data which is to be parsed into the analysis module
+- <sheet_name_for_pred_data> - Sheet name where Predicted sequences are to be stored
+- <dmel_genome> - Path to dmel genome file
+- <genome_fa_file> - Path to genome fasta file
+- <extra_bases> - Extra bases to be added to the sequences
+- <File_Pred> - File name to store Predicted sequences
+- <Save_results> - Path to save results/Directory name to be created
+
+# Additional Information
+To get more information about the implementation details, tools and technologies used, design features, etc. please refer to the following [Project Report](https://drive.google.com/file/d/1mfGzS_NLxhY2437P36VQkCamRnRx_TTu/view?usp=sharing). 
+
+This code is licensed under MIT License and its associated conditions must be followed if you wish to include it in your projects/research.
