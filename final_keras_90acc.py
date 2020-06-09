@@ -107,10 +107,14 @@ result = dff.idxmax(axis=1)
 #print(classification_report(B2, result))
 
 
+result_show = pd.DataFrame(result)
+result_show = dff.max(axis=1)
 #print(result)
 df_predict['Predicted Result'] = result
+df_predict['Confidence'] = result_show
 #print(df_predict)
 df_predict.to_excel('Excel/Predicted_results.xlsx')
+#result_show.to_excel('Excel/Predicted_results.xlsx')
 
 """
 df_down = df.iloc[0:93,]
