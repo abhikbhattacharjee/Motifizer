@@ -66,6 +66,11 @@ docker run -i -t -p 5000:5000 motifizer
 
 To **add your own data into the docker container** in order to carry out various processes and analysis, follow the given [link](https://docs.docker.com/engine/reference/commandline/cp) from the docker documentation.
 
+For quick reference, adding a file named **homer.xlsx** to a docker container with ID **961636d9106d** in the **Home** directory can be carried out:
+```
+sudo docker cp homer_data.xlsx 961636d9106d:/home/motifizer/
+```
+
 # Accessing the GUI for Motifizer
 To access the web-based GUI on your localhost, type in the following command while inside the docker container:
 ```bash
@@ -87,8 +92,16 @@ motifizer@c3c7c64aaa9f:~$ python bookmanager.py
  **Right-click on the IP address** mentioned in the message and open the link in order to access the web-based GUI.
  - **Please note that all the fields mentioned in the Web GUI are compulsory. Omission of any one field would result in unsuccessfull execution of the module**
  
- In order to close the GUI, close the browser tab and press **CTRL+C** on the terminal to close the flask application deamon.
+ In order to close the GUI, close the browser tab and press **CTRL+C** on the terminal to close the flask application deamon. In order to stop and exit the docker container use the command ```exit``` on the docker shell.
  
+ **Remember** to extract the analysed/processed data from the docker container to local host file system **before exiting** the terminal using ```docker cp``` command because running the above-mentioned ```docker run``` command to start another process next time, generates a new docker container with no saved data from the last processing.
+ 
+ Efficient alternative is to use the previously deployed container having the saved processed data. It can be done as follows:
+ ```
+ docker ps -a     #Search for the latest Container ID
+ docker start -ai <YourContainerID>
+ ```
+
  
  # Accessing the CLI Version of Motifizer
  The various commands required to execute the codes via command-line are as follows:
