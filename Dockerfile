@@ -165,7 +165,7 @@ RUN pip install openpyxl
 RUN pip install keras
 RUN pip install scikit-learn
 
-pip install 'HTSeq==0.12.3'
+RUN pip install 'HTSeq==0.12.3'
 
 ENV PATH="/opt/bin:${PATH}"
 RUN adduser --disabled-password --gecos '' motifizer
