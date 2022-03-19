@@ -1,10 +1,9 @@
 # Motifizer
-Motifizer is a gene expression regulation predictor, a project that will address the problem of finding gene regulatory patterns and prove to be a useful tool for the researchers by simplifying the troubles involved in their jobs by optimizing the pre-existing processes to make them cost and time-efficient alongside providing deep conclusive insights about their data.
+Motifizer is a tool for parsing and analysing next generation sequencing data, a project that will address the problem of finding gene regulatory patterns and prove to be a useful tool for the researchers by simplifying the troubles involved in their jobs by optimizing the pre-existing processes to make them cost and time-efficient alongside providing deep conclusive insights about their data.
 Motifizer is comprised of four major modules:
 - Analysis Module (Provides a conclusive result about the count frequency analysis for a particular motif in a given type of regulation)
 - ChIP-Seq Module (Efficiently carries out the computational process of ChIP-Seq Analysis)
 - RNA-Seq Module (Efficiently carries out the computational process of RNA-Seq Analysis. Comprises of Hisat2 as well as EdgeR analysis) 
-- Prediction Module (To effeciently predict the possible regulation of a given sequence)
 
 ## Developed By
 - Abhik Bhattacharjee (abhik.bhattacharjee16@gmail.com)
@@ -25,6 +24,7 @@ Major Dependencies include:
 - MEME Suite (Version : 5.0.4)
 - Bedtools (Version : 2.27.1)
 - Hisat2 (Version : 2.1.0)
+- HTSeq (Version : 0.12.3)
 - Samtools (Version : 1.9)
 - EdgeR (Version : 3.20.2)
 - Homer
@@ -34,7 +34,7 @@ Major Dependencies include:
 - Scikit-learn (Version : 0.20.4)
 
 # Installation
-The successfull implementation is guranteed on any computer system running a Linux Operating System. 
+The successful implementation is guranteed on any computer system running a Linux Operating System. 
 
 Clone the GitHub repository in the directory of your liking. Please note that **minimum availabe space should be atleast 4.8 GB**.
 
@@ -59,7 +59,7 @@ debian              testing             4d9505b13e32        6 weeks ago         
 ```
 
 ### To run the docker container
-After the successfull build of the docker container, execute the following bash command to run the modules mentioned above for your own dataset:
+After the successful build of the docker container, execute the following bash command to run the modules mentioned above for your own dataset:
 ```bash
 docker run -i -t -p 5000:5000 motifizer
 ```
@@ -74,12 +74,12 @@ sudo docker cp homer_data.xlsx 961636d9106d:/home/motifizer/
 # Accessing the GUI for Motifizer
 To access the web-based GUI on your localhost, type in the following command while inside the docker container:
 ```bash
-python bookmanager.py
+python motifizer.py
 ```
 On successfull execution, the following output should be visible on the command line:
 ```
-motifizer@c3c7c64aaa9f:~$ python bookmanager.py
- * Serving Flask app "bookmanager" (lazy loading)
+motifizer@c3c7c64aaa9f:~$ python motifizer.py
+ * Serving Flask app "motifizer" (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
@@ -136,7 +136,7 @@ motifizer@c3c7c64aaa9f:~$ python bookmanager.py
 - <save_res> - Path to save results/Directory name to be created
 
 ### For RNA-Seq Module
-#### HISAT2 Analysis
+#### HISAT2 Analysis - Paired Ended
 ```bash
 ./RNA_seq.sh <genome_fa> <fq1_file> <fq2_file> <sam_file> <bam_file> <filtered_bam> <gene_gtf> <htseq_file> <save_res>
 ```
@@ -163,20 +163,6 @@ motifizer@c3c7c64aaa9f:~$ python bookmanager.py
 - <control_file_2> - Path to control file 2
 - <control_file_3> - Path to control file 3
 - <save_res> - Path to save results/Directory name to be created
-
-### For Prediction Module
-```bash
-./predict.sh <JASPAR_file_or_equivalent> <ChIP_Seq_data_Excel> <sheet_name_for_pred_data> <dmel_genome> <genome_fa_file> <extra_bases> <File_Pred> <Save_results>
-```
-
-- <JASPAR_file_or_equivalent> - Path to/ Name of JASPAR or equivalent database
-- <RNA_Seq_data_excel> - Path/File name for the RNA-Seq Data which is to be parsed into the analysis module
-- <sheet_name_for_pred_data> - Sheet name where Predicted sequences are to be stored
-- <dmel_genome> - Path to dmel genome file
-- <genome_fa_file> - Path to genome fasta file
-- <extra_bases> - Extra bases to be added to the sequences
-- <File_Pred> - File name to store Predicted sequences
-- <Save_results> - Path to save results/Directory name to be created
 
 # Additional Information
 To get more information about the implementation details, tools and technologies used, design features, etc. please refer to the following [Project Report](https://drive.google.com/file/d/1mfGzS_NLxhY2437P36VQkCamRnRx_TTu/view?usp=sharing). 
