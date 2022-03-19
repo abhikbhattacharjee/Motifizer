@@ -1,4 +1,5 @@
 #!/bin/bash
+chmod 777 -R .
 export PATH=$HOME/meme/bin:$PATH
 
 mkdir Output_fimo

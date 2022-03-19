@@ -1,6 +1,6 @@
 #!/bin/bash
-
-mkdir $9
+chmod 777 -R .
+mkdir $6
 
 #hisat2-build $1 genome_hisat2_rna-seq_index
 #wait
@@ -13,17 +13,17 @@ mkdir $9
 #htseq-count --format=bam --stranded=no --type=exon $6 $7 > $8
 #wait
 
-bash RNA_Script1.sh $1 $2 $3 $4
+bash RNA_Script1.sh $1 $2 $3 hisat2.sam
 wait
-bash RNA_Script2.sh $4 $5 $6
+bash RNA_Script2.sh hisat2.sam hisat2.bam hisat2_filtered.bam
 wait
-bash RNA_Script3.sh $6 $7 $8
+bash RNA_Script3.sh hisat2_filtered.bam $4 $5
 wait
 
 
-mv $8 $9
-mv $4 $9
-mv $5 $9
-mv $6 $9
+mv $5 $6
+rm -f hisat2.sam
+rm -f hisat2.bam
+mv hisat2_filtered.bam $6
 #mv genome_hisat2_rna-seq_index $9
-mv genome_hisat2_rna* $9
+mv genome_hisat2_rna* $6
