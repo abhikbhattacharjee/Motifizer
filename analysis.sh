@@ -1,4 +1,5 @@
 #!/bin/bash
+chmod 777 -R .
 a=1
 export PATH=$HOME/meme/bin:$PATH
 
@@ -49,4 +50,9 @@ mv $9 ${12}/Sequence_files
 mv ${10} ${12}/Sequence_files
 mv ${11} ${12}/Sequence_files
 mv Excel ${12}
+
+mv $1 ${12}
+mv $2 ${12}
+mv $6 ${12}
+mv $7 ${12}
 
