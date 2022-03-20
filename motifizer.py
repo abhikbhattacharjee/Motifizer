@@ -249,7 +249,7 @@ def chip_annotate():
 		annotate_gtf = f3.filename
 		annotate_save_res = request.form.get('save_results_chip2')
 		
-	get_shell_script_output_using_check_output5(str(bam_ip_motifizer),str(test_BAM_motifizer),str(filtered_GTF2_motifizer),str(save_results_chip2))
+	get_shell_script_output_using_check_output5(str(annotate_bam),str(annotate_test),str(annotate_gtf),str(annotate_save_res))
 	return render_template("chip_annotate_pg.html")
 
 
