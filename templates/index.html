@@ -26,84 +26,23 @@
 	<div class="bg-contact3" style="background-image: url('static/images/bg-01.jpg');">
 		<div class="container-contact3">
 			<div class="wrap-contact3">
-				<form class="contact3-form validate-form" method="POST" action="/run">
+				<form class="contact3-form validate-form" method="POST" action="/run" enctype = "multipart/form-data">
 					<span class="contact3-form-title">
-						Motifizer
+						<center><img src = "static/images/motifizerLogo.png"></center>
 					</span>
-					<span class="contact3-form-title"><center>
-						<h4>
-							An automated module for prediction gene regulation from sequencing datasets
-						</h4>
-						<!--<h6>
-							Developed by SPACY<br>
-						</h6>--><br>
-						<h6> Analysis Module </h6>
+					<span class="contact3-form-title">
+					<center>
+						<h4> Analysis Module </h4>
 					</center></span> 
-
-					<!--<div class="wrap-contact3-form-radio">
-						<div class="contact3-form-radio m-r-42">
-							<input class="input-radio3" id="radio1" type="radio" name="choice" value="say-hi" checked="checked">
-							<label class="label-radio3" for="radio1">
-								Say Hi
-							</label>
-						</div>
-
-						<div class="contact3-form-radio">
-							<input class="input-radio3" id="radio2" type="radio" name="choice" value="get-quote">
-							<label class="label-radio3" for="radio2">
-								Get a Quote
-							</label>
-						</div>
-					</div>
-
-					<div class="wrap-input3 validate-input" data-validate="Name is required">
-						<input class="input3" type="text" name="name" placeholder="Your Name">
-						<span class="focus-input3"></span>
-					</div>
-
-					<div class="wrap-input3 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input3" type="text" name="email" placeholder="Your Email">
-						<span class="focus-input3"></span>
-					</div>
-
-					<div class="wrap-input3 input3-select">
-						<div>
-							<select class="selection-2" name="service">
-								<option>Needed Services</option>
-								<option>eCommerce Bussiness</option>
-								<option>UI/UX Design</option>
-								<option>Online Services</option>
-							</select>
-						</div>
-						<span class="focus-input3"></span>
-					</div>
-
-					<div class="wrap-input3 input3-select">
-						<div>
-							<select class="selection-2" name="budget">
-								<option>Budget</option>
-								<option>1500 $</option>
-								<option>2000 $</option>
-								<option>3000 $</option>
-							</select>
-						</div>
-						<span class="focus-input3"></span>
-					</div>
-
-					<div class="wrap-input3 validate-input" data-validate = "Message is required">
-						<textarea class="input3" name="message" placeholder="Your Message"></textarea>
-						<span class="focus-input3"></span>
-					</div> -->
-					
 					<div class="wrap-input3 validate-input" data-validate="Name is required">
 						<h6>Path to JASPAR database</h6><br>
-						<input class="input3" type="text" name="jaspar_path" placeholder="Path to JASPAR database">
+						<input class="input3" type="file" name="jaspar_path" placeholder="Path to JASPAR database">
 						<span class="focus-input3"></span>
 					</div><br><br>
 
 					<div class="wrap-input3 validate-input" data-validate="Name is required">
 						<h6>Path to RNA seq data</h6><br>
-						<input class="input3" type="text" name="rna_path" placeholder="Path to RNA seq data">
+						<input class="input3" type="file" name="rna_path" placeholder="Path to RNA seq data">
 						<span class="focus-input3"></span>
 					</div><br><br>
 					
@@ -127,14 +66,14 @@
 					
 					<div class="wrap-input3 validate-input" data-validate="Name is required">
 						<h6>Path to dmel genome file</h6><br>
-						<input class="input3" type="text" name="dmel" placeholder="Path to dmel genome file">
+						<input class="input3" type="file" name="dmel" placeholder="Path to dmel genome file">
 						<span class="focus-input3"></span>
 					</div><br><br>
 
 					
 					<div class="wrap-input3 validate-input" data-validate="Name is required">
 						<h6>Path to Genome FASTA file</h6><br>
-						<input class="input3" type="text" name="genome" placeholder="Path to Genome FASTA file">
+						<input class="input3" type="file" name="genome" placeholder="Path to Genome FASTA file">
 						<span class="focus-input3"></span>
 					</div><br><br>
 					
