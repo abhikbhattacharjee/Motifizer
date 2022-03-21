@@ -27,7 +27,7 @@ def get_shell_script_output_using_check_output2(a,b,c,d,e,f,g,h):
 	return stdout	
 	
 def get_shell_script_output_using_check_output3(a,b,c,d,e,f):
-	stdout = check_output(['./RNA_seq.sh',a,b,c,d,e,f]).decode('utf-8')
+	stdout = check_output(['./rna_hisat_pe.sh',a,b,c,d,e,f]).decode('utf-8')
 	return stdout	
 
 def get_shell_script_output_using_check_output4(a,b,c,d,e,f,g):
@@ -102,6 +102,7 @@ def test12():
 @app.route('/run',methods=['GET', 'POST'])
 def home():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['jaspar_path']
 		f1.save(f1.filename)
 		f2 = request.files['rna_path']
@@ -131,6 +132,7 @@ def home():
 @app.route('/run_chip',methods=['GET', 'POST'])
 def home1():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['genome_path']
 		f1.save(f1.filename)
 		f2 = request.files['test_fq']
@@ -152,6 +154,7 @@ def home1():
 @app.route('/run_pred',methods=['GET','POST'])
 def pred_home():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		jaspar_path_pred1 = request.form.get('jaspar_path_pred')
 		chip_pred_data = request.form.get('chip_pred')
 		pred_sheet = request.form.get('sheet_pred')
@@ -167,6 +170,7 @@ def pred_home():
 @app.route('/run_hisat',methods=['GET','POST'])
 def rna_home():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['genome_path_rna']
 		f1.save(f1.filename)
 		f2 = request.files['fq1']
@@ -189,6 +193,7 @@ def rna_home():
 @app.route('/run_hisat_se',methods=['GET','POST'])
 def rna_hisat_se():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['genome_path_rna_se']
 		f1.save(f1.filename)
 		f2 = request.files['fq_se']
@@ -210,6 +215,7 @@ def rna_hisat_se():
 @app.route('/run_edgeR',methods=['GET','POST'])
 def rna_home_edgeR():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['ptf1']
 		f1.save(f1.filename)
 		f2 = request.files['ptf2']
@@ -238,6 +244,7 @@ def rna_home_edgeR():
 @app.route('/run_chip_annotate',methods=['GET','POST'])
 def chip_annotate():
 	if request.method == 'POST':
+		print("Uploading files, please wait")
 		f1 = request.files['bam_ip_motifizer']
 		f1.save(f1.filename)
 		f2 = request.files['test_BAM_motifizer']
@@ -249,7 +256,7 @@ def chip_annotate():
 		annotate_gtf = f3.filename
 		annotate_save_res = request.form.get('save_results_chip2')
 		
-	get_shell_script_output_using_check_output5(str(bam_ip_motifizer),str(test_BAM_motifizer),str(filtered_GTF2_motifizer),str(save_results_chip2))
+	get_shell_script_output_using_check_output5(str(annotate_bam),str(annotate_test),str(annotate_gtf),str(annotate_save_res))
 	return render_template("chip_annotate_pg.html")
 
 
