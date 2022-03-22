@@ -34,8 +34,8 @@ def get_shell_script_output_using_check_output4(a,b,c,d,e,f,g):
 	stdout = check_output(['./edgeR_rna_seq.sh',a,b,c,d,e,f,g]).decode('utf-8')
 	return stdout
 
-def get_shell_script_output_using_check_output5(a,b,c,d):
-	stdout = check_output(['./chip_annotation.sh',a,b,c,d]).decode('utf-8')
+def get_shell_script_output_using_check_output5(a,b,c,d,e):
+	stdout = check_output(['./chip_annotation.sh',a,b,c,d,e]).decode('utf-8')
 	return stdout	
 
 def get_shell_script_output_using_check_output6(a,b,c,d,e):
@@ -251,12 +251,15 @@ def chip_annotate():
 		f2.save(f2.filename)
 		f3 = request.files['filtered_GTF2_motifizer']
 		f3.save(f3.filename)
+		f4 = request.files['gen_fa_chip_ann']
+		f4.save(f4.filename)
 		annotate_bam = f1.filename
 		annotate_test = f2.filename
 		annotate_gtf = f3.filename
+		gen_fa_annotate = f4.filename
 		annotate_save_res = request.form.get('save_results_chip2')
 		
-	get_shell_script_output_using_check_output5(str(annotate_bam),str(annotate_test),str(annotate_gtf),str(annotate_save_res))
+	get_shell_script_output_using_check_output5(str(annotate_bam),str(annotate_test),str(annotate_gtf),str(annotate_save_res),str(gen_fa_annotate))
 	return render_template("chip_annotate_pg.html")
 
 
