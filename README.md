@@ -38,7 +38,7 @@ Clone the GitHub repository in the directory of your liking. Please note that **
 ### Building the Docker container
 Traverse into the directory location where the Git repo is cloned and enter the following command via command line interface:
 ```bash
-docker build --tag motifizer **.**
+docker build --tag motifizer .
 ```
 This process requires an active internet connection.
 
