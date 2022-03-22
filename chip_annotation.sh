@@ -16,3 +16,4 @@ mv $1 $4
 mv $2 $4
 mv $3 $4
 mv $5 $4
+mv output_motif $4
