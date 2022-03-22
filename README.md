@@ -1,6 +1,6 @@
 # Motifizer
 Motifizer is a tool for parsing and analysing next generation sequencing data, a project that will address the problem of finding gene regulatory patterns and prove to be a useful tool for the researchers by simplifying the troubles involved in their jobs by optimizing the pre-existing processes to make them cost and time-efficient alongside providing deep conclusive insights about their data.
-Motifizer is comprised of four major modules:
+Motifizer is comprised of three major modules:
 - Analysis Module (Provides a conclusive result about the count frequency analysis for a particular motif in a given type of regulation)
 - ChIP-Seq Module (Efficiently carries out the computational process of ChIP-Seq Analysis)
 - RNA-Seq Module (Efficiently carries out the computational process of RNA-Seq Analysis. Comprises of Hisat2 as well as EdgeR analysis) 
@@ -12,7 +12,7 @@ Motifizer is comprised of four major modules:
 - Yash Gaglani (yashsuccessredefined@gmail.com)
 - Soumen Khan (soumenkhan123@gmail.com)
 
-We would be happy to address any issues faced while testing and deployment of the source code on the end-users' device, which will make our code more robust and consistent. You can raise an issue on Github or contact us on the provided email addresses.
+We would be happy to address any issues faced while testing and deployment of the source code on the end-users' device, which will make our code more robust and consistent. For any questions or concerns, contact us on the provided email addresses.
 
 # Prerequisites
 To install all the dependencies, docker engine must be installed on the end-users' device. Please refer the [user manual](https://docs.docker.com/engine/install/ubuntu) for Ubuntu. Please install the docker engine corressponding to your active distro/version.
@@ -29,19 +29,16 @@ Major Dependencies include:
 - EdgeR (Version : 3.20.2)
 - Homer
 - Flask (Version : 1.1.2)
-- TensorFlow (Version : 2.1.0)
-- Keras (Version : 2.3.1)
-- Scikit-learn (Version : 0.20.4)
 
 # Installation
 The successful implementation is guranteed on any computer system running a Linux Operating System. 
 
-Clone the GitHub repository in the directory of your liking. Please note that **minimum availabe space should be atleast 4.8 GB**.
+Clone the GitHub repository in the directory of your liking. Please note that **minimum availabe space should be atleast 5.5 GB**.
 
 ### Building the Docker container
 Traverse into the directory location where the Git repo is cloned and enter the following command via command line interface:
 ```bash
-docker build --tag motifizer .
+docker build --tag motifizer **.**
 ```
 This process requires an active internet connection.
 
@@ -53,22 +50,15 @@ docker images
 It should show a similar output:
 ```
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-motifizer           latest              a7f8881f70ee        5 hours ago         4.82GB
+motifizer           latest              a7f8881f70ee        5 hours ago         5.03GB
 ubuntu              18.04               c3c304cb4f22        6 weeks ago         64.2MB
 debian              testing             4d9505b13e32        6 weeks ago         118MB
 ```
 
 ### To run the docker container
-After the successful build of the docker container, execute the following bash command to run the modules mentioned above for your own dataset:
+After the successful build of the docker image, execute the following bash command to run the modules mentioned above:
 ```bash
-docker run -i -t -p 5000:5000 motifizer
-```
-
-To **add your own data into the docker container** in order to carry out various processes and analysis, follow the given [link](https://docs.docker.com/engine/reference/commandline/cp) from the docker documentation.
-
-For quick reference, adding a file named **homer.xlsx** to a docker container with ID **961636d9106d** in the **Home** directory can be carried out:
-```
-sudo docker cp homer_data.xlsx 961636d9106d:/home/motifizer/
+docker run -i -t -v <pwd_motifizer_cloned>:/home/motifizer -p 5000:5000 motifizer
 ```
 
 # Accessing the GUI for Motifizer
@@ -90,18 +80,9 @@ motifizer@c3c7c64aaa9f:~$ python motifizer.py
  * Debugger PIN: 280-051-235
  ```
  **Right-click on the IP address** mentioned in the message and open the link in order to access the web-based GUI.
- - **Please note that all the fields mentioned in the Web GUI are compulsory. Omission of any one field would result in unsuccessfull execution of the module**
+ - **Please note that all the fields mentioned in the Web UI are compulsory. Omission of any one field would result in unsuccessful execution of the module**
  
  In order to close the GUI, close the browser tab and press **CTRL+C** on the terminal to close the flask application deamon. In order to stop and exit the docker container use the command ```exit``` on the docker shell.
- 
- **Remember** to extract the analysed/processed data from the docker container to local host file system **before exiting** the terminal using ```docker cp``` command because running the above-mentioned ```docker run``` command to start another process next time, generates a new docker container with no saved data from the last processing.
- 
- Efficient alternative is to use the previously deployed container having the saved processed data. It can be done as follows:
- ```
- docker ps -a     #Search for the latest Container ID
- docker start -ai <YourContainerID>
- ```
-
  
  # Accessing the CLI Version of Motifizer
  The various commands required to execute the codes via command-line are as follows:
@@ -124,34 +105,53 @@ motifizer@c3c7c64aaa9f:~$ python motifizer.py
 - <File_Notdiff> - File name to store NOT DIFFERENTIALLY regulated sequences
 - <Save_results> - Path to save results/Directory name to be created
 
-### For ChIP_Seq Module
+### For ChIP_Seq Module - Alignment, Peak Calling and Annotation
 ```bash
-./ChIP_seq.sh <path_genome_fa> <path_test_fq> <path_input_fq> <genome_name> <save_res>
+./ChIP_seq.sh <path_genome_fa> <path_test_fq> <path_input_fq> <gtf_file> <save_res>
 ```
 
 - <path_genome_fa> - Path to the genome fasta file 
-- <path_test_fq> - Path to the test FASTQ file (.gzip)
-- <path_input_fq> - Path to the input FASTQ file (.gzip)
-- <genome_name> - Genome name (dm6,etc)
+- <path_test_fq> - Path to the test FASTQ file 
+- <path_input_fq> - Path to the input FASTQ file 
+- <gtf_file> - Path to GTF File
 - <save_res> - Path to save results/Directory name to be created
 
-### For RNA-Seq Module
-#### HISAT2 Analysis - Paired Ended
+### For ChIP_Seq Module - Peak Calling and Annotation
 ```bash
-./RNA_seq.sh <genome_fa> <fq1_file> <fq2_file> <sam_file> <bam_file> <filtered_bam> <gene_gtf> <htseq_file> <save_res>
+./chip_annotation.sh <input_bam> <test_bam> <gtf_file> <save_res> <path_genome_fa>
+```
+
+- <input_bam> - Path to input BAM file
+- <test_bam> - Path to test BAM file
+- <gtf_file> - Path to GTF File
+- <save_res> - Path to save results/Directory name to be created
+- <path_genome_fa> - Path to the genome fasta file
+
+### For RNA-Seq Module
+#### Hisat2 Alignment and HTSeq Count - Paired Ended
+```bash
+./rna_hisat_pe.sh <genome_fa> <fq1_file> <fq2_file> <gene_gtf> <htseq_file> <save_res>
 ```
 
 - <genome_fa> - Path to genome file for which indexing is to be done
 - <fq1_file> - Path to first FASTQ file
 - <fq2_file> - Path to second FASTQ file
-- <sam_file> - Name of SAM file to be created
-- <bam_file> - Name of BAM file to be created
-- <filtered_bam> - Name of Filtered BAM file to be created
-- <gene_gtf> - Path to gene gtf file
-- <htseq_file> - Desired HTSEQ file name
+- <gene_gtf> - Path to GTF file
+- <htseq_file> - Desired Count file name
 - <save_res> - Path to save results/Directory name to be created
 
-#### EdgeR Analysis
+#### Hisat2 Alignment and HTSeq Count - Single Ended
+```bash
+./rna_hisat_se.sh <genome_fa> <fastq_file> <gene_gtf> <htseq_file> <save_res>
+```
+
+- <genome_fa> - Path to genome file for which indexing is to be done
+- <fastq_file> - Path to FASTQ file
+- <gene_gtf> - Path to GTF file
+- <htseq_file> - Desired Count file name
+- <save_res> - Path to save results/Directory name to be created
+
+#### Differential Gene Expression Analysis
 ```bash
 ./edgeR_rna_seq.sh <test_file_1> <test_file_2> <test_file_3> <control_file_1> <control_file_2> <control_file_3> <save_res> 
 ```
