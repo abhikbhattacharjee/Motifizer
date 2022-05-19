@@ -33,16 +33,16 @@ Major Dependencies include:
 # Installation
 The successful implementation is guranteed on any computer system running a Linux Operating System. 
 
-Clone the GitHub repository in the directory of your liking. Please note that **minimum availabe space should be atleast 5.5 GB**.
+Clone the GitHub repository in the directory of your liking. Please note that **minimum availabe space should be atleast 5.5 GB** for a successful docker build.
 
-### Building the Docker container
+### Building the Docker image
 Traverse into the directory location where the Git repo is cloned and enter the following command via command line interface:
 ```bash
 docker build --tag motifizer .
 ```
 This process requires an active internet connection.
 
-To ensure the successfull build of the docker container, execute the following command via command line interface:
+To ensure the successful build of the docker container, execute the following command via command line interface:
 ```bash
 docker images
 ```
@@ -53,6 +53,11 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 motifizer           latest              a7f8881f70ee        5 hours ago         5.03GB
 ubuntu              18.04               c3c304cb4f22        6 weeks ago         64.2MB
 debian              testing             4d9505b13e32        6 weeks ago         118MB
+```
+
+### To ensure that all the files have the right executable permissions, run the following in the cloned directory:
+```bash
+sudo chmod -R 777 .
 ```
 
 ### To run the docker container
@@ -66,7 +71,7 @@ To access the web-based GUI on your localhost, type in the following command whi
 ```bash
 python motifizer.py
 ```
-On successfull execution, the following output should be visible on the command line:
+On successful execution, the following output should be visible on the command line:
 ```
 motifizer@c3c7c64aaa9f:~$ python motifizer.py
  * Serving Flask app "motifizer" (lazy loading)
@@ -83,6 +88,12 @@ motifizer@c3c7c64aaa9f:~$ python motifizer.py
  - **Please note that all the fields mentioned in the Web UI are compulsory. Omission of any one field would result in unsuccessful execution of the module**
  
  In order to close the GUI, close the browser tab and press **CTRL+C** on the terminal to close the flask application deamon. In order to stop and exit the docker container use the command ```exit``` on the docker shell.
+ 
+ In case a container is not exited correctly, you can stop and remove all the running containers using the following commands on a new terminal: 
+```bash
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+```
  
  # Accessing the CLI Version of Motifizer
  The various commands required to execute the codes via command-line are as follows:
