@@ -1,5 +1,5 @@
 #!/bin/bash
-chmod 777 -R .
+sudo chmod 777 -R .
 a=1
 export PATH=$HOME/meme/bin:$PATH
 
@@ -41,18 +41,20 @@ bash script4.sh $2 $3 $4 $5
 mkdir ${12}
 mkdir ${12}/Sequence_files
 
-mv FASTA ${12}
-mv Output_fimo ${12}
-mv not_final.bed ${12}/Sequence_files
-mv up_final.bed ${12}/Sequence_files
-mv down_final.bed ${12}/Sequence_files
+rm -rf FASTA 
+rm -rf Output_fimo
+mv not_final.bed ${12}/Sequence_files/Enhancer_Group3_final.bed
+mv up_final.bed ${12}/Sequence_files/Enhancer_Group1_final.bed
+mv down_final.bed ${12}/Sequence_files/Enhancer_Group2_final.bed
 mv $9 ${12}/Sequence_files
 mv ${10} ${12}/Sequence_files
 mv ${11} ${12}/Sequence_files
+mv Excel/Up_regulation.xlsx Excel/Enhancer_Group1.xlsx
+mv Excel/Down_regulation.xlsx Excel/Enhancer_Group2.xlsx
+mv Excel/Notdiff_regulation.xlsx Excel/Enhancer_Group3.xlsx
 mv Excel ${12}
 
 mv $1 ${12}
 mv $2 ${12}
 mv $6 ${12}
 mv $7 ${12}
-

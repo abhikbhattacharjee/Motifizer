@@ -159,7 +159,7 @@ RUN pip install matplotlib
 RUN pip install tensorflow
 
 RUN pip install pandas
-RUN pip install xlrd
+RUN pip install xlrd==1.2.0
 RUN sudo apt-get install -y parallel
 RUN pip install openpyxl
 RUN pip install keras

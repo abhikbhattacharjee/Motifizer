@@ -24,6 +24,6 @@ print (df)
 
 diff_sums = df.select_dtypes(pd.np.number).sum().rename('total').to_frame()
 
-overall = pd.concat([diff_sums,up_sums,down_sums],axis=1)
+overall = pd.concat([diff_sums,up_sums,down_sums],axis=1,sort=True)
 overall.columns = ['not_diff','up','down']
 overall.to_excel('Excel/Overall_count_analysis.xlsx')

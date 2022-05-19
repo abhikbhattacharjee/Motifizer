@@ -114,15 +114,15 @@ def home():
 	
 		jaspar_path1 = f1.filename  # access the data inside 
 		rna_path1 = f2.filename
-		up_path1 = request.form.get('up_data')
-		down_path1 = request.form.get('down_data')
-		not_path1 = request.form.get('not_data')
+		up_path1 = 'Enhancer_Group1'
+		down_path1 = 'Enhancer_Group2'
+		not_path1 = 'Enhancer_Group3'
 		dmel_path1 = f3.filename
 		genome_path1 = f4.filename
 		base_pair_path1 = request.form.get('basepairs')
-		up_name_path1 = request.form.get('up_seq')
-		down_name_path1 = request.form.get('down_seq')
-		not_name_path1 = request.form.get('not_seq')
+		up_name_path1 = 'Enhancer_Group1_fa'
+		down_name_path1 = 'Enhancer_Group2_fa'
+		not_name_path1 = 'Enhancer_Group3_fa'
 		save_path1 = request.form.get('save_res')	
     	
 	get_shell_script_output_using_check_output(str(jaspar_path1),str(rna_path1),str(up_path1),str(down_path1),str(not_path1),str(dmel_path1),str(genome_path1),str(base_pair_path1),str(up_name_path1),str(down_name_path1),str(not_name_path1),str(save_path1))
