@@ -49,9 +49,11 @@ mv down_final.bed ${12}/Sequence_files/Enhancer_Group2_final.bed
 mv $9 ${12}/Sequence_files
 mv ${10} ${12}/Sequence_files
 mv ${11} ${12}/Sequence_files
-mv Excel/Up_regulation.xlsx Excel/Enhancer_Group1.xlsx
-mv Excel/Down_regulation.xlsx Excel/Enhancer_Group2.xlsx
-mv Excel/Notdiff_regulation.xlsx Excel/Enhancer_Group3.xlsx
+rm Excel/Up_regulation.xlsx
+rm Excel/Down_regulation.xlsx
+rm Excel/Notdiff_regulation.xlsx
+rm Excel/Overall_count_analysis.xlsx
+rm Excel/Peak_calling_length.xlsx
 mv Excel ${12}
 
 mv $1 ${12}

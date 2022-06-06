@@ -105,20 +105,19 @@ docker rm $(docker ps -a -q)
  
  ### For Analysis Module
  ```bash
- ./BE_Project.sh <JASPAR_file_or_equivalent> <RNA_Seq_data_Excel> <sheet_name_for_UP_regulation_data> <sheet_name_for_DOWN_regulation_data> <sheet_name_for_NOTDIFF_regulation_data> <dmel_genome> <genome_fa_file> <extra_bases> <File_Up> <File_Down> <File_Notdiff> <Save_results>
-
+ ./BE_Project.sh <JASPAR_file_or_equivalent> <RNA_Seq_data_Excel> <sheet_name_for_Enhancer_Group1_data> <sheet_name_for_Enhancer_Group2_data> <sheet_name_for_Enhancer_Group3_data> <dmel_genome> <genome_fa_file> <extra_bases> <File_Enhancer_Group1> <File_Enhancer_Group2> <File_Enhancer_Group3> <Save_results>
 ```
 - <JASPAR_file_or_equivalent> - Path to/ Name of JASPAR or equivalent database
 - <RNA_Seq_data_excel> - Path/File name for the RNA-Seq Data which is to be parsed into the analysis module
-- <sheet_name_for_UP_regulation_data> - Sheet name where UP regulated sequences are stored
-- <sheet_name_for_DOWN_regulation_data> - Sheet name where DOWN regulated sequences are stored
-- <sheet_name_for_NOTDIFF_regulation_data> - Sheet name where NOT DIFFERENTIALLY regulated sequences are stored
+- <sheet_name_for_Enhancer_Group1_data> - Sheet name where Enhancer_Group1 sequences are stored
+- <sheet_name_for_Enhancer_Group2_data> - Sheet name where Enhancer_Group2 sequences are stored
+- <sheet_name_for_Enhancer_Group3_data> - Sheet name where Enhancer_Group3 sequences are stored
 - <dmel_genome> - Path to dmel genome file
 - <genome_fa_file> - Path to genome fasta file
 - <extra_bases> - Extra bases to be added to the sequences
-- <File_Up> - File name to store UP regulated sequences
-- <File_Down> - File name to store DOWN regulated sequences 
-- <File_Notdiff> - File name to store NOT DIFFERENTIALLY regulated sequences
+- <File_Enhancer_Group1> - File name to store Enhancer_Group1 sequences
+- <File_Enhancer_Group2> - File name to store Enhancer_Group2 sequences 
+- <File_Enhancer_Group3> - File name to store Enhancer_Group3 sequences
 - <Save_results> - Path to save results/Directory name to be created
 
 ### For ChIP_Seq Module - Alignment, Peak Calling and Annotation
